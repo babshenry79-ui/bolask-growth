@@ -1,0 +1,1572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bolask Growth — YouTube & Twitch Growth Strategy</title>
+<link rel="preconnect" href="https://api.fontshare.com">
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&f[]=cabinet-grotesk@500,700,800,900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #080b10;
+    --bg2: #0d1117;
+    --bg3: #111720;
+    --surface: #151c27;
+    --border: rgba(255,255,255,0.08);
+    --accent: #ff8c42;
+    --accent2: #ffb347;
+    --text: #f5f0eb;
+    --muted: #b0a89e;
+    --card: #111820;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Cabinet Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── SCROLLBAR ─── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+  /* ─── TYPOGRAPHY ─── */
+  h1,h2,h3,h4 { font-family: 'Clash Display', sans-serif; line-height: 1.1; letter-spacing: -0.02em; }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 20px 6vw;
+    display: flex; align-items: center; justify-content: space-between;
+    backdrop-filter: blur(20px);
+    background: rgba(8,11,16,0.85);
+    border-bottom: 1px solid var(--border);
+    transition: all .3s;
+  }
+  .nav-logo {
+    font-family: 'Clash Display', sans-serif;
+    font-weight: 800; font-size: 1.25rem;
+    color: var(--text); text-decoration: none;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: .5; transform: scale(1.4); }
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    color: var(--muted); text-decoration: none; font-size: .9rem;
+    font-weight: 500; transition: color .2s; letter-spacing: .02em;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta {
+    background: var(--accent); color: #080b10;
+    padding: 10px 22px; border-radius: 6px;
+    text-decoration: none; font-weight: 700;
+    font-family: 'Clash Display', sans-serif;
+    font-size: .85rem; letter-spacing: .04em;
+    transition: all .2s; white-space: nowrap;
+  }
+  .nav-cta:hover { background: #fff; transform: translateY(-1px); }
+
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 24px; height: 2px; background: var(--text); display: block; transition: all .3s; }
+  .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+  .mobile-menu {
+    display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--bg); z-index: 99; padding: 100px 6vw 40px;
+    flex-direction: column; gap: 32px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    color: var(--text); text-decoration: none;
+    font-family: 'Clash Display', sans-serif; font-size: 2rem; font-weight: 700;
+  }
+
+  /* ─── HERO ─── */
+  #hero {
+    min-height: 100vh;
+    padding: 140px 6vw 80px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+    align-items: center;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(ellipse 60% 50% at 70% 50%, rgba(255,140,66,.07) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 10% 80%, rgba(255,179,71,.04) 0%, transparent 60%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; pointer-events: none; opacity: .03;
+    background-image:
+      linear-gradient(var(--text) 1px, transparent 1px),
+      linear-gradient(90deg, var(--text) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,140,66,.08); border: 1px solid rgba(255,140,66,.2);
+    color: var(--accent); padding: 6px 14px; border-radius: 100px;
+    font-size: .8rem; font-weight: 600; letter-spacing: .08em;
+    text-transform: uppercase; margin-bottom: 24px;
+  }
+  .hero-title {
+    font-size: clamp(2.6rem, 5vw, 4.4rem);
+    font-weight: 800; margin-bottom: 24px;
+  }
+  .hero-title .line2 { color: var(--accent); }
+  .hero-sub {
+    color: var(--muted); font-size: 1.1rem; font-weight: 700;
+    max-width: 480px; margin-bottom: 40px; line-height: 1.7;
+  }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--accent); color: #080b10;
+    padding: 14px 28px; border-radius: 8px;
+    text-decoration: none; font-weight: 700;
+    font-family: 'Clash Display', sans-serif; font-size: .95rem;
+    transition: all .2s; display: inline-block;
+  }
+  .btn-primary:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 12px 40px rgba(255,140,66,.3); }
+  .btn-outline {
+    background: transparent; color: var(--text);
+    padding: 14px 28px; border-radius: 8px;
+    text-decoration: none; font-weight: 600;
+    font-family: 'Clash Display', sans-serif; font-size: .95rem;
+    border: 1px solid var(--border); transition: all .2s; display: inline-block;
+  }
+  .btn-outline:hover { border-color: rgba(255,255,255,.3); background: rgba(255,255,255,.04); }
+  .hero-stats {
+    display: flex; gap: 32px; margin-top: 48px; flex-wrap: wrap;
+  }
+  .stat { display: flex; flex-direction: column; }
+  .stat-num {
+    font-family: 'Clash Display', sans-serif;
+    font-size: 1.6rem; font-weight: 800; color: var(--accent);
+  }
+  .stat-label { font-size: .8rem; color: var(--muted); font-weight: 500; }
+
+  /* ─── SLIDESHOW ─── */
+  .hero-slide-wrap {
+    position: relative; z-index: 1;
+  }
+  .slideshow {
+    position: relative; border-radius: 16px; overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    box-shadow: 0 40px 80px rgba(0,0,0,.6);
+  }
+  .slide {
+    display: none; padding: 32px;
+    animation: fadeSlide .6s ease;
+  }
+  .slide.active { display: block; }
+  @keyframes fadeSlide {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .slide-type {
+    font-size: .72rem; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--accent);
+    background: rgba(232,255,71,.1); display: inline-block;
+    padding: 4px 10px; border-radius: 4px; margin-bottom: 16px;
+  }
+  .slide-title {
+    font-family: 'Clash Display', sans-serif;
+    font-size: 1.3rem; font-weight: 700; margin-bottom: 10px;
+  }
+  .slide-desc { color: var(--muted); font-size: .9rem; line-height: 1.6; margin-bottom: 20px; font-weight: 700; }
+  .slide-metric {
+    display: flex; gap: 16px; flex-wrap: wrap;
+  }
+  .metric-box {
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: 10px; padding: 14px 20px; flex: 1; min-width: 100px;
+  }
+  .metric-val {
+    font-family: 'Clash Display', sans-serif;
+    font-size: 1.6rem; font-weight: 800;
+    color: var(--accent);
+  }
+  .metric-val.blue { color: var(--accent2); }
+  .metric-val.green { color: #47ff9e; }
+  .metric-label { font-size: .75rem; color: var(--muted); margin-top: 2px; }
+
+  .slide-controls {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 32px;
+    border-top: 1px solid var(--border);
+    background: var(--bg3);
+  }
+  .slide-dots { display: flex; gap: 8px; }
+  .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--muted); cursor: pointer; transition: all .2s;
+  }
+  .dot.active { background: var(--accent); width: 20px; border-radius: 4px; }
+  .slide-arrows { display: flex; gap: 8px; }
+  .arrow-btn {
+    width: 32px; height: 32px; border-radius: 6px;
+    border: 1px solid var(--border); background: transparent;
+    color: var(--text); cursor: pointer; transition: all .2s;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+  }
+  .arrow-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .slide-quote {
+    font-size: .95rem; font-style: italic; color: var(--text);
+    line-height: 1.6; margin-bottom: 16px;
+    padding-left: 16px;
+    border-left: 3px solid var(--accent);
+  }
+  .slide-author {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .slide-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Clash Display', sans-serif; font-weight: 800;
+    color: #080b10; font-size: .9rem;
+  }
+  .slide-author-info { display: flex; flex-direction: column; }
+  .slide-author-name { font-weight: 600; font-size: .9rem; }
+  .slide-author-handle { font-size: .75rem; color: var(--muted); }
+  .stars { color: var(--accent); font-size: .8rem; margin-bottom: 8px; }
+
+  /* ─── SECTION BASE ─── */
+  section { padding: 100px 6vw; }
+  .section-tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: .72rem; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--muted);
+    margin-bottom: 16px;
+  }
+  .section-tag::before {
+    content: ''; display: inline-block;
+    width: 20px; height: 2px; background: var(--accent);
+  }
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800; margin-bottom: 16px;
+  }
+  .section-sub {
+    color: var(--muted); max-width: 540px;
+    font-size: 1.05rem; line-height: 1.7; font-weight: 700;
+  }
+  .section-header { margin-bottom: 60px; }
+
+  /* ─── ABOUT ─── */
+  #about {
+    background: var(--bg2);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .about-visual {
+    position: relative;
+  }
+  .about-card-main {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 16px; padding: 32px;
+    position: relative; overflow: hidden;
+  }
+  .about-card-main::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+  }
+  .about-name {
+    font-family: 'Clash Display', sans-serif;
+    font-size: 1.5rem; font-weight: 800; margin-bottom: 4px;
+  }
+  .about-role { color: var(--accent); font-size: .85rem; font-weight: 700; margin-bottom: 20px; }
+  .about-bio { color: var(--muted); font-size: .9rem; line-height: 1.7; font-weight: 700; }
+  .about-badges {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px;
+  }
+  .badge {
+    background: var(--bg3); border: 1px solid var(--border);
+    padding: 6px 12px; border-radius: 6px;
+    font-size: .78rem; color: var(--muted); font-weight: 700;
+  }
+  .floating-stat {
+    position: absolute; background: var(--bg2);
+    border: 1px solid var(--border); border-radius: 12px;
+    padding: 14px 18px; box-shadow: 0 20px 40px rgba(0,0,0,.4);
+  }
+  .floating-stat.s1 { bottom: -24px; right: -24px; }
+  .floating-stat.s2 { top: -24px; left: -24px; }
+  .floating-val { font-family: 'Clash Display', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--accent); }
+  .floating-label { font-size: .72rem; color: var(--muted); }
+
+  .about-points { list-style: none; display: flex; flex-direction: column; gap: 16px; margin-top: 32px; }
+  .about-points li {
+    display: flex; gap: 14px; align-items: flex-start;
+  }
+  .point-icon {
+    width: 24px; height: 24px; border-radius: 6px;
+    background: rgba(255,140,66,.1); border: 1px solid rgba(255,140,66,.2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: .75rem; color: var(--accent); flex-shrink: 0; margin-top: 2px;
+  }
+  .point-text { color: var(--muted); font-size: .95rem; line-height: 1.5; font-weight: 700; }
+  .point-text strong { color: var(--text); }
+
+  /* ─── SERVICES ─── */
+  #services { background: var(--bg); }
+  .services-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+    gap: 24px;
+  }
+  .service-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 16px; padding: 32px;
+    transition: all .3s; position: relative; overflow: hidden;
+    cursor: default;
+  }
+  .service-card::after {
+    content: ''; position: absolute;
+    inset: 0; opacity: 0;
+    background: linear-gradient(135deg, rgba(255,140,66,.04), transparent);
+    transition: opacity .3s;
+  }
+  .service-card:hover { border-color: rgba(255,140,66,.2); transform: translateY(-4px); }
+  .service-card:hover::after { opacity: 1; }
+  .service-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: rgba(255,140,66,.08); border: 1px solid rgba(255,140,66,.15);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem; margin-bottom: 20px;
+  }
+  .service-card h3 {
+    font-size: 1.15rem; font-weight: 700; margin-bottom: 10px;
+  }
+  .service-card p { color: var(--muted); font-size: .9rem; line-height: 1.6; font-weight: 700; }
+
+  /* ─── CASE STUDIES ─── */
+  #cases { background: var(--bg2); }
+  .cases-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(320px,1fr));
+    gap: 28px;
+  }
+  .case-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; overflow: hidden; transition: all .3s;
+  }
+  .case-card:hover { transform: translateY(-4px); border-color: rgba(255,140,66,.15); }
+  .case-header {
+    padding: 24px 28px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: flex-start;
+  }
+  .case-niche {
+    font-size: .72rem; font-weight: 700; letter-spacing: .1em;
+    text-transform: uppercase; color: var(--accent);
+    background: rgba(232,255,71,.08); padding: 4px 10px; border-radius: 4px;
+  }
+  .case-platform {
+    font-size: .75rem; color: var(--muted);
+  }
+  .case-body { padding: 24px 28px; }
+  .case-body h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+  .case-body p { color: var(--muted); font-size: .88rem; line-height: 1.6; margin-bottom: 20px; font-weight: 700; }
+  .case-metrics {
+    display: grid; grid-template-columns: repeat(3,1fr); gap: 12px;
+  }
+  .case-metric { background: var(--bg3); border-radius: 8px; padding: 12px; text-align: center; }
+  .case-metric-val { font-family: 'Syne',sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--accent); }
+  .case-metric-val.b { color: var(--accent2); }
+  .case-metric-val.g { color: #47ff9e; }
+  .case-metric-label { font-size: .7rem; color: var(--muted); margin-top: 2px; }
+
+  /* ─── PROCESS ─── */
+  #process { background: var(--bg); }
+  .process-steps {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    gap: 0; position: relative;
+  }
+  .process-steps::before {
+    content: ''; position: absolute;
+    top: 40px; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border) 20%, var(--border) 80%, transparent);
+    pointer-events: none;
+  }
+  .process-step {
+    padding: 0 24px 0 0; position: relative;
+  }
+  .step-num {
+    width: 56px; height: 56px; border-radius: 50%;
+    background: var(--bg2); border: 2px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Clash Display', sans-serif; font-weight: 800;
+    font-size: 1rem; color: var(--accent);
+    margin-bottom: 24px; position: relative; z-index: 1;
+    transition: all .3s;
+  }
+  .process-step:hover .step-num {
+    border-color: var(--accent); background: rgba(255,140,66,.08);
+    box-shadow: 0 0 24px rgba(255,140,66,.25);
+  }
+  .process-step h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+  .process-step p { color: var(--muted); font-size: .88rem; line-height: 1.6; font-weight: 700; }
+
+  /* ─── RESULTS ─── */
+  #results { background: var(--bg2); }
+  .results-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+  }
+  .results-list { display: flex; flex-direction: column; gap: 20px; }
+  .result-item {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 20px; background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; transition: all .3s;
+  }
+  .result-item:hover { border-color: rgba(255,140,66,.2); transform: translateX(4px); }
+  .result-icon {
+    width: 40px; height: 40px; border-radius: 10px;
+    background: rgba(255,140,66,.08); display: flex; align-items: center;
+    justify-content: center; font-size: 1.1rem; flex-shrink: 0;
+  }
+  .result-item h4 { font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+  .result-item p { color: var(--muted); font-size: .85rem; line-height: 1.5; font-weight: 700; }
+  .results-big-stat {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 20px; padding: 40px; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .results-big-stat::before {
+    content: ''; position: absolute;
+    bottom: 0; left: 50%; transform: translateX(-50%);
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(255,140,66,.08) 0%, transparent 70%);
+  }
+  .big-num {
+    font-family: 'Clash Display', sans-serif;
+    font-size: 5rem; font-weight: 800; color: var(--accent);
+    line-height: 1;
+  }
+  .big-label { font-size: 1.2rem; font-weight: 600; margin: 12px 0 8px; }
+  .big-sub { color: var(--muted); font-size: .9rem; }
+
+  /* ─── TESTIMONIALS ─── */
+  #testimonials { background: var(--bg); }
+  .testi-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+    gap: 24px;
+  }
+  .testi-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 16px; padding: 28px; transition: all .3s;
+  }
+  .testi-card:hover { border-color: rgba(232,255,71,.15); transform: translateY(-3px); }
+  .testi-stars { color: var(--accent); font-size: .85rem; margin-bottom: 14px; }
+  .testi-quote { color: var(--text); font-size: .95rem; line-height: 1.7; margin-bottom: 20px; font-style: italic; font-weight: 700; }
+  .testi-author { display: flex; align-items: center; gap: 12px; }
+  .testi-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne',sans-serif; font-weight: 800;
+    font-size: .9rem; color: #080b10;
+  }
+  .testi-name { font-weight: 600; font-size: .9rem; }
+  .testi-handle { font-size: .75rem; color: var(--muted); }
+
+  /* ─── WHO THIS IS FOR ─── */
+  #who { background: var(--bg2); }
+  .who-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;
+  }
+  .who-for-list, .who-not-list { display: flex; flex-direction: column; gap: 14px; }
+  .who-item {
+    display: flex; gap: 12px; align-items: center;
+    padding: 14px 18px; border-radius: 10px; border: 1px solid var(--border);
+    font-size: .9rem;
+  }
+  .who-item.yes { background: rgba(71,255,158,.04); border-color: rgba(71,255,158,.15); }
+  .who-item.no { background: rgba(255,71,71,.04); border-color: rgba(255,71,71,.12); }
+  .who-item.yes span:first-child { color: #47ff9e; }
+  .who-item.no span:first-child { color: #ff5f5f; }
+
+  /* ─── WHY ME ─── */
+  #why { background: var(--bg); }
+  .why-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+    gap: 20px;
+  }
+  .why-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; padding: 28px; transition: all .3s;
+    position: relative;
+  }
+  .why-card:hover { border-color: rgba(255,140,66,.2); transform: translateY(-3px); }
+  .why-icon { font-size: 1.8rem; margin-bottom: 14px; }
+  .why-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+  .why-card p { color: var(--muted); font-size: .88rem; line-height: 1.6; font-weight: 700; }
+  .why-accent {
+    position: absolute; top: 16px; right: 16px;
+    font-size: .7rem; font-weight: 700; letter-spacing: .06em;
+    color: var(--accent); background: rgba(255,140,66,.08);
+    padding: 3px 8px; border-radius: 4px;
+  }
+
+  /* ─── PRICING ─── */
+  #pricing {
+    background: var(--bg2);
+  }
+  .pricing-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+    max-width: 860px;
+  }
+  .price-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 20px; padding: 36px; position: relative;
+    overflow: hidden; transition: all .3s;
+  }
+  .price-card.featured {
+    border-color: rgba(255,140,66,.3);
+    background: linear-gradient(160deg, rgba(255,140,66,.04) 0%, var(--surface) 50%);
+  }
+  .price-card.featured::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+  }
+  .price-badge {
+    display: inline-block; background: var(--accent); color: #080b10;
+    padding: 4px 12px; border-radius: 100px;
+    font-size: .72rem; font-weight: 800; letter-spacing: .06em;
+    text-transform: uppercase; margin-bottom: 20px;
+  }
+  .price-badge.outline {
+    background: transparent; color: var(--muted);
+    border: 1px solid var(--border);
+  }
+  .price-name {
+    font-family: 'Clash Display', sans-serif;
+    font-size: 1.4rem; font-weight: 800; margin-bottom: 6px;
+  }
+  .price-tagline { color: var(--muted); font-size: .88rem; margin-bottom: 24px; font-weight: 700; }
+  .price-amount {
+    font-family: 'Clash Display', sans-serif;
+    font-size: 2.8rem; font-weight: 800; color: var(--accent);
+    line-height: 1; margin-bottom: 6px;
+  }
+  .price-amount span { font-size: 1rem; color: var(--muted); font-weight: 500; }
+  .price-note { font-size: .8rem; color: var(--muted); margin-bottom: 28px; }
+  .price-divider { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+  .price-includes { color: var(--muted); font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; margin-bottom: 14px; }
+  .price-features { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+  .price-features li {
+    display: flex; gap: 10px; align-items: flex-start;
+    font-size: .9rem; color: var(--text);
+  }
+  .price-features li::before {
+    content: '✓'; color: var(--accent); font-weight: 800;
+    font-size: .85rem; flex-shrink: 0; margin-top: 2px;
+  }
+  .price-features li.muted-item { color: var(--muted); }
+  .btn-price {
+    display: block; text-align: center; text-decoration: none;
+    padding: 14px; border-radius: 10px;
+    font-family: 'Clash Display', sans-serif; font-weight: 700; font-size: .95rem;
+    transition: all .2s;
+  }
+  .btn-price.primary { background: var(--accent); color: #080b10; }
+  .btn-price.primary:hover { background: #fff; transform: translateY(-1px); }
+  .btn-price.secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
+  .btn-price.secondary:hover { border-color: rgba(255,140,66,.3); color: var(--accent); }
+
+  /* ─── FAQ ─── */
+  #faq { background: var(--bg); }
+  .faq-list { max-width: 720px; display: flex; flex-direction: column; gap: 12px; }
+  .faq-item {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden; transition: border-color .2s;
+  }
+  .faq-item.open { border-color: rgba(255,140,66,.2); }
+  .faq-q {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 24px; cursor: pointer;
+    font-family: 'Clash Display', sans-serif; font-size: 1rem; font-weight: 600;
+    transition: color .2s;
+  }
+  .faq-q:hover { color: var(--accent); }
+  .faq-icon { font-size: 1.2rem; color: var(--muted); transition: transform .3s; flex-shrink: 0; }
+  .faq-item.open .faq-icon { transform: rotate(45deg); color: var(--accent); }
+  .faq-a {
+    max-height: 0; overflow: hidden;
+    transition: max-height .35s ease, padding .35s ease;
+    color: var(--muted); font-size: .9rem; line-height: 1.7;
+    padding: 0 24px; font-weight: 700;
+  }
+  .faq-item.open .faq-a { max-height: 300px; padding: 0 24px 20px; }
+
+  /* ─── CONTACT ─── */
+  #contact {
+    background: var(--bg2);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  .contact-headline {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 800; line-height: 1.1; margin-bottom: 20px;
+  }
+  .contact-headline span { color: var(--accent); }
+  .contact-sub { color: var(--muted); font-size: 1rem; line-height: 1.7; margin-bottom: 36px; font-weight: 700; }
+  .contact-methods { display: flex; flex-direction: column; gap: 16px; }
+  .contact-method {
+    display: flex; gap: 16px; align-items: center;
+    padding: 18px 20px; background: var(--card);
+    border: 1px solid var(--border); border-radius: 12px;
+    text-decoration: none; color: var(--text); transition: all .2s;
+  }
+  .contact-method:hover { border-color: rgba(255,140,66,.3); transform: translateX(4px); }
+  .contact-method-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+  .contact-method-icon.email { background: rgba(71,201,255,.1); }
+  .contact-method-icon.discord { background: rgba(88,101,242,.15); }
+  .contact-method-title { font-weight: 600; font-size: .95rem; }
+  .contact-method-val { font-size: .82rem; color: var(--muted); }
+  .contact-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 20px; padding: 36px; position: relative; overflow: hidden;
+  }
+  .contact-card::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+  }
+  .contact-form-title {
+    font-family: 'Clash Display', sans-serif; font-size: 1.3rem; font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .contact-form-sub { color: var(--muted); font-size: .88rem; margin-bottom: 28px; }
+  .form-group { margin-bottom: 18px; }
+  .form-group label {
+    display: block; font-size: .8rem; font-weight: 600;
+    color: var(--muted); margin-bottom: 8px; letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%; padding: 12px 16px;
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: 8px; color: var(--text);
+    font-family: 'Cabinet Grotesk', sans-serif; font-size: .9rem;
+    transition: border-color .2s; outline: none;
+  }
+  .form-group input::placeholder, .form-group textarea::placeholder { color: #404855; }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: rgba(255,140,66,.5); }
+  .form-group textarea { height: 100px; resize: vertical; }
+  .form-group select { appearance: none; cursor: pointer; }
+  .btn-submit {
+    width: 100%; padding: 14px;
+    background: var(--accent); color: #080b10;
+    border: none; border-radius: 10px; cursor: pointer;
+    font-family: 'Clash Display', sans-serif; font-weight: 800;
+    font-size: 1rem; letter-spacing: .04em; transition: all .2s;
+  }
+  .btn-submit:hover { background: #fff; transform: translateY(-1px); box-shadow: 0 10px 30px rgba(255,140,66,.25); }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--bg); border-top: 1px solid var(--border);
+    padding: 40px 6vw;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px;
+  }
+  .footer-logo { font-family: 'Syne',sans-serif; font-weight: 800; font-size: 1.1rem; }
+  .footer-logo span { color: var(--accent); }
+  .footer-text { color: var(--muted); font-size: .82rem; }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { color: var(--muted); text-decoration: none; font-size: .82rem; transition: color .2s; }
+  .footer-links a:hover { color: var(--text); }
+
+  /* ─── BONUS SECTION ─── */
+  #bonus { background: var(--bg2); }
+  .bonus-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 24px; }
+  .bonus-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 28px;
+  }
+  .bonus-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 16px; color: var(--accent); }
+  .bonus-card ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .bonus-card ul li { font-size: .88rem; color: var(--muted); display: flex; gap: 8px; }
+  .bonus-card ul li::before { content: '→'; color: var(--accent); flex-shrink: 0; }
+
+  /* ─── FADE-IN ANIMATION ─── */
+  .fade-in {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  .fade-in-delay-1 { transition-delay: .1s; }
+  .fade-in-delay-2 { transition-delay: .2s; }
+  .fade-in-delay-3 { transition-delay: .3s; }
+  .fade-in-delay-4 { transition-delay: .4s; }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 900px) {
+    #hero { grid-template-columns: 1fr; padding-top: 120px; }
+    .hero-slide-wrap { order: -1; }
+    #about { grid-template-columns: 1fr; gap: 40px; }
+    .results-grid { grid-template-columns: 1fr; }
+    .who-grid { grid-template-columns: 1fr; }
+    #contact { grid-template-columns: 1fr; gap: 40px; }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 460px; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .process-steps::before { display: none; }
+    nav .nav-links, nav .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .floating-stat.s1, .floating-stat.s2 { position: relative; inset: auto; margin: 8px 0; }
+  }
+  @media (max-width: 600px) {
+    .process-steps { grid-template-columns: 1fr; }
+    .hero-stats { gap: 20px; }
+    section { padding: 70px 5vw; }
+    #contact, #about { padding: 70px 5vw; }
+    footer { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a class="nav-logo" href="#">
+    <span class="nav-dot"></span>
+    Bolask<span>Growth</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#cases">Results</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <a class="nav-cta" href="#contact">Get Started</a>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#cases" onclick="closeMobile()">Results</a>
+  <a href="#pricing" onclick="closeMobile()">Pricing</a>
+  <a href="#faq" onclick="closeMobile()">FAQ</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-content">
+    <div class="hero-tag">📈 YouTube & Twitch Growth Strategy</div>
+    <h1 class="hero-title">
+      We Don't Chase<br>Views. We<br>
+      <span class="line2">Engineer Growth.</span>
+    </h1>
+    <p class="hero-sub">
+      Bolask Growth is a creator-first strategy studio. We work with serious YouTube and Twitch creators who are done guessing and ready to grow with a system that actually works.
+    </p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Start Growing →</a>
+      <a href="#cases" class="btn-outline">See Results</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">40+</span>
+        <span class="stat-label">Channels Optimized</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">3.8M+</span>
+        <span class="stat-label">Views Generated</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">94%</span>
+        <span class="stat-label">Client Retention</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-slide-wrap fade-in fade-in-delay-2">
+    <div class="slideshow">
+      <!-- Slide 1 -->
+      <div class="slide active">
+        <div class="slide-type">📊 Channel Growth</div>
+        <div class="slide-title">Gaming Channel — 0 to 10K in 5 Months</div>
+        <div class="slide-desc">After a full channel audit, keyword restructure, and thumbnail system, this FPS gaming creator went from zero to monetization-eligible in under 6 months.</div>
+        <div class="slide-metric">
+          <div class="metric-box">
+            <div class="metric-val">10.2K</div>
+            <div class="metric-label">Subscribers</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val blue">8.4%</div>
+            <div class="metric-label">Avg CTR</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val green">↑312%</div>
+            <div class="metric-label">Watch Time</div>
+          </div>
+        </div>
+      </div>
+      <!-- Slide 2 -->
+      <div class="slide">
+        <div class="slide-type">🎯 CTR Improvement</div>
+        <div class="slide-title">Lifestyle Channel — CTR Jumped from 1.9% to 7.1%</div>
+        <div class="slide-desc">Thumbnail redesign strategy and title reformatting turned a stagnant lifestyle channel into YouTube's algorithm favorite. CTR nearly quadrupled in 8 weeks.</div>
+        <div class="slide-metric">
+          <div class="metric-box">
+            <div class="metric-val">7.1%</div>
+            <div class="metric-label">CTR After</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val blue">+274%</div>
+            <div class="metric-label">Impressions</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val green">4.2K</div>
+            <div class="metric-label">New Subs (8wks)</div>
+          </div>
+        </div>
+      </div>
+      <!-- Slide 3 -->
+      <div class="slide">
+        <div class="slide-type">🔥 Engagement Boost</div>
+        <div class="slide-title">Twitch Streamer — Avg Viewers 3x in 3 Months</div>
+        <div class="slide-desc">Stream structure overhaul, discovery keyword optimization, and clip-to-YouTube repurposing strategy tripled average concurrent viewers for this variety streamer.</div>
+        <div class="slide-metric">
+          <div class="metric-box">
+            <div class="metric-val">3.1x</div>
+            <div class="metric-label">Avg Viewers</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val blue">+88%</div>
+            <div class="metric-label">Follower Rate</div>
+          </div>
+          <div class="metric-box">
+            <div class="metric-val green">Affiliate</div>
+            <div class="metric-label">Achieved in 45d</div>
+          </div>
+        </div>
+      </div>
+      <!-- Slide 4: Testimonial -->
+      <div class="slide">
+        <div class="slide-type">⭐ Client Testimonial</div>
+        <div class="stars">★★★★★</div>
+        <div class="slide-quote">
+          "I was posting consistently for over a year with no results. After working with Bolask Growth, I finally understood what the algorithm actually wanted. Hit 10K in 4 months. Wish I found this sooner."
+        </div>
+        <div class="slide-author">
+          <div class="slide-avatar">JK</div>
+          <div class="slide-author-info">
+            <span class="slide-author-name">Jason K.</span>
+            <span class="slide-author-handle">FPS Gaming · 12.4K Subs</span>
+          </div>
+        </div>
+      </div>
+      <!-- Slide 5: Testimonial 2 -->
+      <div class="slide">
+        <div class="slide-type">⭐ Client Testimonial</div>
+        <div class="stars">★★★★★</div>
+        <div class="slide-quote">
+          "The audit alone was worth every penny. He broke down exactly why my thumbnails were underperforming and gave me a system I still use today. My CTR went from 2.1% to over 6% in 6 weeks."
+        </div>
+        <div class="slide-author">
+          <div class="slide-avatar">AS</div>
+          <div class="slide-author-info">
+            <span class="slide-author-name">Amara S.</span>
+            <span class="slide-author-handle">Lifestyle & Wellness · 8.1K Subs</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-controls">
+        <div class="slide-dots" id="slideDots"></div>
+        <div class="slide-arrows">
+          <button class="arrow-btn" id="prevBtn">←</button>
+          <button class="arrow-btn" id="nextBtn">→</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-visual fade-in">
+    <div class="about-card-main">
+      <div class="about-name">Bolask Growth</div>
+      <div class="about-role">YouTube & Twitch Growth Strategist</div>
+      <div class="about-bio">
+        I'm not a course seller or a hype merchant. I'm a growth strategist who spends every day studying what actually moves channels forward — algorithm patterns, audience behavior, search demand, and content structure.
+        <br><br>
+        Every channel I've worked with has left with a clear system, not just advice. I believe good strategy should feel obvious in hindsight.
+      </div>
+      <div class="about-badges">
+        <span class="badge">YouTube SEO</span>
+        <span class="badge">Twitch Strategy</span>
+        <span class="badge">Thumbnail Systems</span>
+        <span class="badge">Content Direction</span>
+        <span class="badge">Audience Research</span>
+      </div>
+    </div>
+    <div class="floating-stat s1">
+      <div class="floating-val">40+</div>
+      <div class="floating-label">Channels Scaled</div>
+    </div>
+    <div class="floating-stat s2">
+      <div class="floating-val">5★</div>
+      <div class="floating-label">Average Rating</div>
+    </div>
+  </div>
+
+  <div class="fade-in fade-in-delay-1">
+    <div class="section-tag">About Me</div>
+    <h2 class="section-title">A Strategist,<br>Not a Guru.</h2>
+    <p class="section-sub">
+      My approach is direct: I look at your data, find the gaps, build a strategy, and help you execute it. No vague advice, no fluff — just a real growth plan you can act on immediately.
+    </p>
+    <ul class="about-points">
+      <li>
+        <div class="point-icon">✦</div>
+        <div class="point-text"><strong>Data-first thinking.</strong> I don't guess what's wrong with your channel. I look at your analytics, your niche's search demand, and your competitors — then I tell you exactly what to fix.</div>
+      </li>
+      <li>
+        <div class="point-icon">✦</div>
+        <div class="point-text"><strong>No cookie-cutter plans.</strong> Every channel is different. What works for a gaming creator won't work for a finance creator. Your strategy is built for you.</div>
+      </li>
+      <li>
+        <div class="point-icon">✦</div>
+        <div class="point-text"><strong>Built on real results.</strong> Every strategy I recommend has been proven on real channels — not theoretical frameworks from a blog post.</div>
+      </li>
+      <li>
+        <div class="point-icon">✦</div>
+        <div class="point-text"><strong>Long-term growth mindset.</strong> I'm not interested in one viral video. I want to build you a system that compounds over time.</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header fade-in">
+    <div class="section-tag">What We Do</div>
+    <h2 class="section-title">Services Built for<br>Serious Creators</h2>
+    <p class="section-sub">Every service is designed to attack a specific growth bottleneck on your channel.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-in">
+      <div class="service-icon">🔍</div>
+      <h3>Channel Audit & SEO</h3>
+      <p>A deep diagnostic of your entire channel — titles, descriptions, tags, thumbnails, structure, and metadata — with a prioritized fix list that actually moves the needle.</p>
+    </div>
+    <div class="service-card fade-in fade-in-delay-1">
+      <div class="service-icon">🎯</div>
+      <h3>Keyword & Title Strategy</h3>
+      <p>Find high-demand, low-competition keywords in your niche. Rewrite your titles using proven frameworks that improve CTR and searchability simultaneously.</p>
+    </div>
+    <div class="service-card fade-in fade-in-delay-2">
+      <div class="service-icon">🖼️</div>
+      <h3>Thumbnail System Design</h3>
+      <p>Analyse what's working in your niche, identify thumbnail patterns that drive clicks, and give you a repeatable design framework your audience will recognize.</p>
+    </div>
+    <div class="service-card fade-in fade-in-delay-3">
+      <div class="service-icon">📅</div>
+      <h3>Content Direction & Planning</h3>
+      <p>Build a 30–90 day content calendar focused on videos your audience is already searching for — paired with topics that have real growth potential.</p>
+    </div>
+    <div class="service-card fade-in fade-in-delay-1">
+      <div class="service-icon">🎮</div>
+      <h3>Twitch Discovery Optimization</h3>
+      <p>Category strategy, stream titles, tags, and a clip-to-YouTube pipeline that turns your Twitch streams into a passive growth machine.</p>
+    </div>
+    <div class="service-card fade-in fade-in-delay-2">
+      <div class="service-icon">📊</div>
+      <h3>Custom Growth Plan</h3>
+      <p>A comprehensive, channel-specific 90-day growth roadmap covering every element: content, SEO, thumbnails, upload cadence, and audience development strategy.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="cases">
+  <div class="section-header fade-in">
+    <div class="section-tag">Case Studies</div>
+    <h2 class="section-title">Real Channels.<br>Real Growth.</h2>
+    <p class="section-sub">Here's what focused strategy looks like in practice across different niches.</p>
+  </div>
+  <div class="cases-grid">
+    <div class="case-card fade-in">
+      <div class="case-header">
+        <span class="case-niche">Gaming</span>
+        <span class="case-platform">YouTube</span>
+      </div>
+      <div class="case-body">
+        <h3>FPS Gaming Creator — "Dead Channel to Monetized"</h3>
+        <p>A Call of Duty creator with 800 subscribers and low CTR. After a full audit, title overhaul, thumbnail system, and a 60-day content plan targeting mid-competition keywords, the channel hit monetization threshold.</p>
+        <div class="case-metrics">
+          <div class="case-metric">
+            <div class="case-metric-val">800→10.2K</div>
+            <div class="case-metric-label">Subscribers</div>
+          </div>
+          <div class="case-metric">
+            <div class="case-metric-val b">8.4%</div>
+            <div class="case-metric-label">CTR</div>
+          </div>
+          <div class="case-metric">
+            <div class="case-metric-val g">5 mo</div>
+            <div class="case-metric-label">Timeline</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-card fade-in fade-in-delay-1">
+      <div class="case-header">
+        <span class="case-niche">Lifestyle</span>
+        <span class="case-platform">YouTube</span>
+      </div>
+      <div class="case-body">
+        <h3>Lifestyle Creator — "CTR Was Killing Everything"</h3>
+        <p>Solid content that no one was clicking. We rebuilt the thumbnail system from scratch with a new visual identity, rewrote 12 underperforming titles, and introduced A/B testing habits. CTR more than tripled.</p>
+        <div class="case-metrics">
+          <div class="case-metric">
+            <div class="case-metric-val">1.9→7.1%</div>
+            <div class="case-metric-label">CTR</div>
+          </div>
+          <div class="case-metric">
+            <div class="case-metric-val b">+4.2K</div>
+            <div class="case-metric-label">Subscribers</div>
+          </div>
+          <div class="case-metric">
+            <div class="case-metric-val g">8 wks</div>
+            <div class="case-metric-label">Timeline</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="case-card fade-in fade-in-delay-2">
+      <div class="case-header">
+        <span class="case-niche">Variety</span>
+        <span class="case-platform">Twitch + YouTube</span>
+      </div>
+      <div class="case-body">
+        <h3>Twitch Streamer — "Finally Got My Affiliate Badge"</h3>
+        <p>A variety streamer stuck below 10 avg viewers. Category selection rework, stream title optimization, and a YouTube clip repurposing system tripled their concurrent viewers and secured Affiliate status in 45 days.</p>
+        <div class="case-metrics">
+          <div class="case-metric">
+            <div class="case-metric-val">3→11</div>
+            <div class="case-metric-label">Avg Viewers</div>
+          </div>
+          <div class="case-metric">
+            <div class="case-metric-val b">+88%</div>
+            <div class="case-metric-label">Follower Rate</div>
+          </div>
+          <div class="case-metric">
+            <div class="case-metric-val g">45d</div>
+            <div class="case-metric-label">To Affiliate</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-header fade-in">
+    <div class="section-tag">How I Work</div>
+    <h2 class="section-title">A Process Built<br>Around Your Channel</h2>
+    <p class="section-sub">No guesswork. Every engagement follows the same structured process so you always know what's happening and why.</p>
+  </div>
+  <div class="process-steps">
+    <div class="process-step fade-in">
+      <div class="step-num">01</div>
+      <h3>Discovery Call</h3>
+      <p>We talk about your channel, goals, niche, current bottlenecks, and what you've already tried. I ask the questions most people skip.</p>
+    </div>
+    <div class="process-step fade-in fade-in-delay-1">
+      <div class="step-num">02</div>
+      <h3>Deep Channel Audit</h3>
+      <p>I go through your analytics, content library, metadata, thumbnails, and competitor landscape. This is where I find what's actually holding you back.</p>
+    </div>
+    <div class="process-step fade-in fade-in-delay-2">
+      <div class="step-num">03</div>
+      <h3>Strategy Delivery</h3>
+      <p>You receive a full written strategy document — specific, actionable, prioritized. No vague advice. Every recommendation has a clear reason behind it.</p>
+    </div>
+    <div class="process-step fade-in fade-in-delay-3">
+      <div class="step-num">04</div>
+      <h3>Implementation Support</h3>
+      <p>I'm available to answer questions as you implement. We check in on progress and adjust the strategy based on what your analytics tell us.</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section id="results">
+  <div class="results-grid">
+    <div class="fade-in">
+      <div class="section-tag">What to Expect</div>
+      <h2 class="section-title">What Clients Can Expect</h2>
+      <p class="section-sub" style="margin-bottom:36px;">I'm honest about results — they take time and effort. Here's what the process actually looks like.</p>
+      <div class="results-list">
+        <div class="result-item">
+          <div class="result-icon">📈</div>
+          <div>
+            <h4>Improved CTR in 4–8 Weeks</h4>
+            <p>Most clients see measurable CTR improvements within the first 4–8 weeks of applying the thumbnail and title strategy. This is usually the fastest win.</p>
+          </div>
+        </div>
+        <div class="result-item">
+          <div class="result-icon">🔎</div>
+          <div>
+            <h4>Better Search Visibility in 60–90 Days</h4>
+            <p>SEO changes take time to compound. By the 60–90 day mark, your optimized videos should be pulling in more impressions from YouTube Search.</p>
+          </div>
+        </div>
+        <div class="result-item">
+          <div class="result-icon">📊</div>
+          <div>
+            <h4>Sustained Subscriber Growth</h4>
+            <p>The goal isn't a spike — it's a system. Clients who follow the strategy consistently see subscriber growth that builds month over month.</p>
+          </div>
+        </div>
+        <div class="result-item">
+          <div class="result-icon">🧭</div>
+          <div>
+            <h4>Clarity on Direction</h4>
+            <p>Beyond the numbers, most clients say the biggest win is finally having a clear direction — knowing what to post, when, and why.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="fade-in fade-in-delay-2">
+      <div class="results-big-stat">
+        <div class="big-num">94%</div>
+        <div class="big-label">Of clients see measurable growth within 90 days</div>
+        <div class="big-sub">Across all niches, platforms, and starting sizes — the strategy works when it's executed consistently.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-header fade-in">
+    <div class="section-tag">Testimonials</div>
+    <h2 class="section-title">Creators Who<br>Made the Move</h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card fade-in">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-quote">"I was posting consistently for over a year with no results. After working with Bolask Growth, I finally understood what the algorithm actually wanted. Hit 10K in 4 months."</div>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background: linear-gradient(135deg,#e8ff47,#47c9ff)">JK</div>
+        <div>
+          <div class="testi-name">Jason K.</div>
+          <div class="testi-handle">FPS Gaming · 12.4K Subs</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card fade-in fade-in-delay-1">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-quote">"The audit alone was worth every penny. He broke down exactly why my thumbnails were underperforming and gave me a system I still use today. CTR went from 2.1% to over 6%."</div>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background: linear-gradient(135deg,#ff47e8,#e8ff47)">AS</div>
+        <div>
+          <div class="testi-name">Amara S.</div>
+          <div class="testi-handle">Lifestyle & Wellness · 8.1K Subs</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card fade-in fade-in-delay-2">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-quote">"Went from 3 average viewers to 11 in 45 days. The Twitch strategy was super practical — no fluff. Got my Affiliate badge and have been growing since. Can't recommend this enough."</div>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background: linear-gradient(135deg,#47c9ff,#47ff9e)">RM</div>
+        <div>
+          <div class="testi-name">Ry M.</div>
+          <div class="testi-handle">Variety Streamer · Twitch Affiliate</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card fade-in fade-in-delay-3">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-quote">"What impressed me most was the specificity. This wasn't generic advice — it was exactly what my channel needed. My watch hours doubled in two months. The strategy is legit."</div>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background: linear-gradient(135deg,#ff9e47,#ff4747)">DL</div>
+        <div>
+          <div class="testi-name">Dev L.</div>
+          <div class="testi-handle">Finance & Investing · 5.7K Subs</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO THIS IS FOR -->
+<section id="who">
+  <div class="section-header fade-in">
+    <div class="section-tag">Who This Is For</div>
+    <h2 class="section-title">I Work With<br>Serious Creators</h2>
+    <p class="section-sub">This isn't for everyone. If you're not ready to commit to your channel, we're probably not a good fit — and that's okay.</p>
+  </div>
+  <div class="who-grid">
+    <div class="fade-in">
+      <p style="font-weight:700; margin-bottom:16px; font-family:'Syne',sans-serif;">✅ This IS for you if...</p>
+      <div class="who-for-list">
+        <div class="who-item yes"><span>✓</span><span>You're posting consistently but not seeing the growth you expected</span></div>
+        <div class="who-item yes"><span>✓</span><span>You're serious about treating your channel like a real project</span></div>
+        <div class="who-item yes"><span>✓</span><span>You're willing to implement feedback and adjust your approach</span></div>
+        <div class="who-item yes"><span>✓</span><span>You want data-driven clarity, not vague motivation</span></div>
+        <div class="who-item yes"><span>✓</span><span>You're on YouTube, Twitch, or both and want to grow on platform</span></div>
+        <div class="who-item yes"><span>✓</span><span>You understand real growth takes 60–90 days of consistent execution</span></div>
+      </div>
+    </div>
+    <div class="fade-in fade-in-delay-1">
+      <p style="font-weight:700; margin-bottom:16px; font-family:'Syne',sans-serif;">❌ This is NOT for you if...</p>
+      <div class="who-not-list">
+        <div class="who-item no"><span>✕</span><span>You want overnight results without doing the work</span></div>
+        <div class="who-item no"><span>✕</span><span>You expect me to create content for you</span></div>
+        <div class="who-item no"><span>✕</span><span>You're looking for sub4sub or engagement pods</span></div>
+        <div class="who-item no"><span>✕</span><span>You're not willing to change how you've been doing things</span></div>
+        <div class="who-item no"><span>✕</span><span>You want hype and motivation instead of honest strategy</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY ME -->
+<section id="why">
+  <div class="section-header fade-in">
+    <div class="section-tag">Why Choose Me</div>
+    <h2 class="section-title">What Makes<br>Bolask Growth Different</h2>
+    <p class="section-sub">There's no shortage of YouTube "gurus." Here's why creators keep coming back — and referring others.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card fade-in">
+      <div class="why-icon">🎯</div>
+      <h3>Channel-Specific, Not Generic</h3>
+      <p>Every strategy is built from scratch for your channel, your niche, and your goals. Nothing is copy-pasted from a template.</p>
+    </div>
+    <div class="why-card fade-in fade-in-delay-1">
+      <div class="why-icon">📊</div>
+      <h3>Data Drives Every Decision</h3>
+      <p>Every recommendation is backed by analytics, search data, and niche research — not personal opinion or trending advice.</p>
+      <div class="why-accent">No guesswork</div>
+    </div>
+    <div class="why-card fade-in fade-in-delay-2">
+      <div class="why-icon">⚡</div>
+      <h3>Fast Turnaround</h3>
+      <p>Most audits and strategy documents are delivered within 3–5 business days. You won't be waiting weeks to start making moves.</p>
+    </div>
+    <div class="why-card fade-in fade-in-delay-3">
+      <div class="why-icon">🤝</div>
+      <h3>Honest Communication</h3>
+      <p>If I think something won't work for your channel, I'll tell you. You get my honest assessment — not what you want to hear.</p>
+    </div>
+    <div class="why-card fade-in fade-in-delay-1">
+      <div class="why-icon">🧠</div>
+      <h3>YouTube + Twitch Expertise</h3>
+      <p>Most "YouTube experts" don't understand Twitch at all. I work across both platforms and understand how to grow on each.</p>
+    </div>
+    <div class="why-card fade-in fade-in-delay-2">
+      <div class="why-icon">♻️</div>
+      <h3>Systems, Not One-Time Fixes</h3>
+      <p>I don't just fix what's broken today. I give you repeatable systems so you can keep growing long after we've stopped working together.</p>
+      <div class="why-accent">Long-term</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="section-header fade-in">
+    <div class="section-tag">Pricing</div>
+    <h2 class="section-title">Invest in a Real<br>Growth Strategy</h2>
+    <p class="section-sub">Two ways to work together. Start with the audit, or go straight to a full custom plan.</p>
+  </div>
+  <div class="pricing-grid fade-in">
+    <!-- Starter -->
+    <div class="price-card featured">
+      <div class="price-badge">Most Popular</div>
+      <div class="price-name">Channel Audit & SEO Optimization</div>
+      <div class="price-tagline">The fastest way to find what's holding your channel back — and fix it.</div>
+      <div class="price-amount">$70 <span>starting</span></div>
+      <div class="price-note">Final price based on channel size and scope</div>
+      <hr class="price-divider">
+      <div class="price-includes">What's Included</div>
+      <ul class="price-features">
+        <li>Full channel review — titles, thumbnails, metadata, structure</li>
+        <li>Keyword research & SEO gap analysis for your niche</li>
+        <li>Title rewrites & keyword optimization (up to 10 videos)</li>
+        <li>Thumbnail improvement breakdown with visual direction</li>
+        <li>Content direction — what to post next and why</li>
+        <li>Priority-ranked fix list so you know where to start</li>
+        <li>Written growth strategy breakdown (PDF delivery)</li>
+        <li>7-day Q&A support via Discord after delivery</li>
+      </ul>
+      <a href="#contact" class="btn-price primary">Get My Audit — From $70</a>
+    </div>
+    <!-- Custom -->
+    <div class="price-card">
+      <div class="price-badge outline">Custom Engagement</div>
+      <div class="price-name">Custom Growth Plan</div>
+      <div class="price-tagline">A full 90-day roadmap built around your channel's specific goals and situation.</div>
+      <div class="price-amount">Custom <span>after call</span></div>
+      <div class="price-note">Priced after a free 20-minute discovery call</div>
+      <hr class="price-divider">
+      <div class="price-includes">What's Included</div>
+      <ul class="price-features">
+        <li>Everything in the Channel Audit</li>
+        <li>90-day content calendar (researched topics, SEO-mapped)</li>
+        <li>Full channel rebrand direction (if needed)</li>
+        <li>Twitch + YouTube cross-platform strategy</li>
+        <li>Audience persona & niche positioning analysis</li>
+        <li>Upload schedule & cadence optimization</li>
+        <li>Monthly check-in sessions (30 min)</li>
+        <li>Ongoing Discord strategy support</li>
+      </ul>
+      <a href="#contact" class="btn-price secondary">Book a Free Discovery Call</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-header fade-in">
+    <div class="section-tag">FAQ</div>
+    <h2 class="section-title">Questions<br>Answered Honestly</h2>
+  </div>
+  <div class="faq-list fade-in">
+    <div class="faq-item">
+      <div class="faq-q">How long does it take to see results? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Most clients see initial CTR improvements within 4–8 weeks of applying the thumbnail and title changes. SEO-driven results typically compound over 60–90 days. This isn't a magic fix — it's a strategy that requires consistent execution.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Is the $70 a flat rate? <span class="faq-icon">+</span></div>
+      <div class="faq-a">$70 is the starting price for a basic channel audit. The final price depends on your channel's size, the number of videos reviewed, and the scope of work. I'll give you a clear quote after a quick look at your channel — no surprises.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do you create content for me? <span class="faq-icon">+</span></div>
+      <div class="faq-a">No. I provide the strategy, direction, and optimization — but you create the content. Think of me as your growth strategist, not a content creator or editor.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What if my channel is brand new? <span class="faq-icon">+</span></div>
+      <div class="faq-a">New channels can absolutely benefit from working together — we'll build the right foundation from the start so you don't waste months going in the wrong direction. Starting with the right strategy is far more valuable than fixing mistakes later.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do you guarantee results? <span class="faq-icon">+</span></div>
+      <div class="faq-a">I don't make guarantees because results depend on how consistently you execute the strategy. What I do guarantee is a clear, well-researched, honest plan tailored to your channel — and full support as you implement it. Every creator I've worked with who followed through has seen real improvement.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How do we communicate? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Primarily through Discord and email. After onboarding, you'll have access to my Discord for questions and check-ins. All deliverables are sent via email.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do you work with Twitch streamers too? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Yes — Twitch growth strategy is one of my core services. I can work with streamers looking to grow on Twitch alone, or help creators use YouTube and Twitch together as a powerful cross-platform growth system.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="fade-in">
+    <div class="section-tag">Get In Touch</div>
+    <h2 class="contact-headline">Ready to grow<br>your channel?<br><span>Let's talk.</span></h2>
+    <p class="contact-sub">Whether you have a specific question or want to get started right away, reach out. I respond to every message personally and quickly.</p>
+    <div class="contact-methods">
+      <a href="mailto:babatundeola715@gmail.com" class="contact-method">
+        <div class="contact-method-icon email">✉️</div>
+        <div>
+          <div class="contact-method-title">Email</div>
+          <div class="contact-method-val">babatundeola715@gmail.com</div>
+        </div>
+      </a>
+      <a href="https://discord.gg/kcd6Th4e" target="_blank" class="contact-method">
+        <div class="contact-method-icon discord">💬</div>
+        <div>
+          <div class="contact-method-title">Discord Community</div>
+          <div class="contact-method-val">discord.gg/kcd6Th4e — Join & DM me directly</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <div class="contact-card fade-in fade-in-delay-2">
+    <div class="contact-form-title">Start the Conversation</div>
+    <div class="contact-form-sub">Fill this out and I'll get back to you within 24 hours.</div>
+    <div class="form-group">
+      <label>Your Name</label>
+      <input type="text" placeholder="e.g. Alex Johnson">
+    </div>
+    <div class="form-group">
+      <label>Your Channel / Twitch Link</label>
+      <input type="text" placeholder="youtube.com/@ or twitch.tv/...">
+    </div>
+    <div class="form-group">
+      <label>Email Address</label>
+      <input type="email" placeholder="your@email.com">
+    </div>
+    <div class="form-group">
+      <label>What Do You Need Help With?</label>
+      <select>
+        <option value="">Select a service...</option>
+        <option>Channel Audit & SEO — $70+</option>
+        <option>Custom Growth Plan (Custom Pricing)</option>
+        <option>Twitch Growth Strategy</option>
+        <option>Just Want to Chat First</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Tell Me About Your Channel</label>
+      <textarea placeholder="Your niche, current sub count, biggest challenge, goals..."></textarea>
+    </div>
+    <button class="btn-submit" onclick="handleSubmit(this)">Send Message →</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Bolask<span>Growth</span></div>
+  <div class="footer-text">© 2025 Bolask Growth. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="#hero">Home</a>
+    <a href="#services">Services</a>
+    <a href="#pricing">Pricing</a>
+    <a href="mailto:babatundeola715@gmail.com">Contact</a>
+    <a href="https://discord.gg/kcd6Th4e" target="_blank">Discord</a>
+  </div>
+</footer>
+
+<script>
+  // ─── SLIDESHOW ───────────────────────────────
+  const slides = document.querySelectorAll('.slide');
+  const dotsContainer = document.getElementById('slideDots');
+  let current = 0;
+  let autoTimer;
+
+  // Build dots
+  slides.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.addEventListener('click', () => goTo(i));
+    dotsContainer.appendChild(d);
+  });
+
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    dotsContainer.children[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dotsContainer.children[current].classList.add('active');
+    resetTimer();
+  }
+
+  function resetTimer() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(() => goTo(current + 1), 4200);
+  }
+
+  document.getElementById('nextBtn').addEventListener('click', () => goTo(current + 1));
+  document.getElementById('prevBtn').addEventListener('click', () => goTo(current - 1));
+  resetTimer();
+
+  // ─── NAV HAMBURGER ───────────────────────────
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMobile() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  }
+
+  // ─── SCROLL FADE-IN ──────────────────────────
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // ─── FAQ ACCORDION ───────────────────────────
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // ─── FORM SUBMIT HANDLER ─────────────────────
+  function handleSubmit(btn) {
+    const form = btn.closest('.contact-card');
+    const inputs = form.querySelectorAll('input, textarea, select');
+    let filled = true;
+    inputs.forEach(i => { if (!i.value.trim()) filled = false; });
+    if (!filled) {
+      btn.textContent = 'Please fill all fields';
+      btn.style.background = '#ff5f5f';
+      btn.style.color = '#fff';
+      setTimeout(() => {
+        btn.textContent = 'Send Message →';
+        btn.style.background = '';
+        btn.style.color = '';
+      }, 2400);
+      return;
+    }
+    btn.textContent = '✓ Message Sent!';
+    btn.style.background = '#47ff9e';
+    btn.style.color = '#080b10';
+    inputs.forEach(i => i.value = '');
+    setTimeout(() => {
+      btn.textContent = 'Send Message →';
+      btn.style.background = '';
+      btn.style.color = '';
+    }, 3500);
+  }
+
+  // ─── NAV SHADOW ON SCROLL ────────────────────
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').style.boxShadow =
+      window.scrollY > 30 ? '0 4px 30px rgba(0,0,0,.4)' : 'none';
+  });
+</script>
+</body>
+</html>
